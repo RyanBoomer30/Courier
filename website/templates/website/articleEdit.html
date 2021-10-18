@@ -1,0 +1,39 @@
+{% extends "website/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
+{% endblock %}
+
+{% block body %}
+    <h3>Editting {{ article.articleName }}:</h3>
+    <form action="{% url 'articleEdit' article.id %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <input class="form-control" autofocus type="text" name="name" placeholder="Article Name" value="{{ article.articleName }}">
+        </div>
+        {{ form.media }}
+        {{ form.as_p }}
+        <div class="form-group">
+            <input class="form-control" autofocus type="text" name="credit" placeholder="Image Credit" value="{{ article.imageCredit }}">
+        </div>
+        <div class="form-group">
+            <select class="custom-select mr-sm-2" name="catagory">
+                <option selected>{{ article.articleCatagory }}</option>
+                <option value="News">News</option>
+                <option value="Opinions">Opinions</option>
+                <option value="Sports">Sports</option>
+                <option value="Features">Features</option>
+                <option value="Arts">Arts</option>
+                <option value="Humor">Humor</option>
+            </select>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Post">     
+    </form>
+{% endblock %}

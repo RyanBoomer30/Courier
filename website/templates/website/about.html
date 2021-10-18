@@ -1,0 +1,29 @@
+{% extends "website/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="articleHeader">
+        <h1><strong>About Us</strong></h1>
+    </div>
+    <br>
+    <h5 class="articleContent">
+        The Courier is St. Paul American School Hanoi’s first ever official student-run newspaper. 
+        Founded in 2020, it has since gone on to publish over 150 articles and hundreds of graphics, 
+        photographs, crosswords and more yearly. Our aim is to lend a welcoming, inclusive and critical 
+        platform to students fighting for change and to provide contrasting opinions to guide an understanding 
+        of the world. We are keenly aware that each word written, edited, and published would play a role in 
+        constructing contemporary history for our audience, within and outside of St. Paul. The Courier is 
+        thus committed to accomplish all its journalistic functions with integrity, dedication, empathy and 
+        zeal.
+    </h5>
+{% endblock %}

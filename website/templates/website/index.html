@@ -1,0 +1,194 @@
+{% extends "website/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="owl-one owl-carousel owl-theme">
+        <div class="item">
+            {% with news|first as first %}
+                <img src="{{ first.image.url }}" style="height: 800px;"/>
+                <div class="slider_overlay" id="article" data-id="{{ first.id }}">
+                    <div class="slider_title">{{ first.articleName }}</div>
+                    <p class="slider_writer">By {{ first.writer.name }}</p>
+                </div>
+            {% endwith %}
+        </div>
+        <div class="item">
+            {% with opinions|first as first %}
+                <img src="{{ first.image.url }}" style="height: 800px;"/>
+                <div class="slider_overlay" id="article" data-id="{{ first.id }}">
+                    <div class="slider_title">{{ first.articleName }}</div>
+                    <p class="slider_writer">By {{ first.writer.name }}</p>
+                </div>
+            {% endwith %}
+        </div>
+        <div class="item">
+            {% with sports|first as first %}
+                <img src="{{ first.image.url }}" style="height: 800px;"/>
+                <div class="slider_overlay" id="article" data-id="{{ first.id }}">
+                    <div class="slider_title">{{ first.articleName }}</div>
+                    <p class="slider_writer">By {{ first.writer.name }}</p>
+                </div>
+            {% endwith %}
+        </div>
+        <div class="item">
+            {% with lifestyles|first as first %}
+                <img src="{{ first.image.url }}" style="height: 800px;"/>
+                <div class="slider_overlay" id="article" data-id="{{ first.id }}">
+                    <div class="slider_title">{{ first.articleName }}</div>
+                    <p class="slider_writer">By {{ first.writer.name }}</p>
+                </div>
+            {% endwith %}
+        </div>
+        <div class="item">
+            {% with arts|first as first %}
+                <img src="{{ first.image.url }}" style="height: 800px;"/>
+                <div class="slider_overlay" id="article" data-id="{{ first.id }}">
+                    <div class="slider_title">{{ first.articleName }}</div>
+                    <p class="slider_writer">By {{ first.writer.name }}</p>
+                </div>
+            {% endwith %}
+        </div>
+        <div class="item">
+            {% with humors|first as first %}
+                <img src="{{ first.image.url }}" style="height: 800px;"/>
+                <div class="slider_overlay" id="article" data-id="{{ first.id }}">
+                    <div class="slider_title">{{ first.articleName }}</div>
+                    <p class="slider_writer">By {{ first.writer.name }}</p>
+                </div>
+            {% endwith %}
+        </div>
+        <div class="item">
+            {% with news|first as first %}
+                <img src="{{ first.image.url }}" style="height: 800px;"/>
+                <div class="slider_overlay" id="article" data-id="{{ first.id }}">
+                    <div class="slider_title">{{ first.articleName }}</div>
+                    <p class="slider_writer">By {{ first.writer.name }}</p>
+                </div>
+            {% endwith %}
+        </div>
+    </div>
+    <!-- News -->
+    <br>
+    <h2 class="types-name">NEWS</h2>
+    <fieldset><legend style="width:auto;"></legend></fieldset>
+    <br>
+    <div class="owl-two owl-carousel owl-theme">
+        {% for article in news %}
+        <div class="item">
+            <div class="col-lg-4" style="padding-bottom: 20px; max-width: 100%;" id="article" data-id="{{ article.id }}">
+                <img class="thumbnail" src="{{ article.image.url }}" alt="">
+                <div class="box-element">
+                    <a href="{% url 'article' article.id %}" class="articleView"><h4><strong>{{ article.articleName}}</strong></h4></a>
+                    <hr>
+                    <h6 style="display: inline-block;">{{ article.writer.name }} - {{ article.createdTime|date:"j F Y" }}</h6>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Opinions -->
+    <br>
+    <h2 class="types-name">OPINIONS</h2>
+    <fieldset><legend style="width:auto;"></legend></fieldset>
+    <br>
+    <div class="owl-two owl-carousel owl-theme">
+        {% for article in opinions %}
+        <div class="item">
+            <div class="col-lg-4" style="padding-bottom: 20px; max-width: 100%;" id="article" data-id="{{ article.id }}">
+                <img class="thumbnail" src="{{ article.image.url }}" alt="">
+                <div class="box-element">
+                    <a href="{% url 'article' article.id %}" class="articleView"><h4><strong>{{ article.articleName}}</strong></h4></a>
+                    <hr>
+                    <h6 style="display: inline-block;">{{ article.writer.name }} - {{ article.createdTime|date:"j F Y" }}</h6>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Sports -->
+    <br>
+    <h2 class="types-name">SPORTS</h2>
+    <fieldset><legend style="width:auto;"></legend></fieldset>
+    <br>
+    <div class="owl-two owl-carousel owl-theme">
+        {% for article in sports %}
+        <div class="item">
+            <div class="col-lg-4" style="padding-bottom: 20px; max-width: 100%;" id="article" data-id="{{ article.id }}">
+                <img class="thumbnail" src="{{ article.image.url }}" alt="">
+                <div class="box-element">
+                    <a href="{% url 'article' article.id %}" class="articleView"><h4><strong>{{ article.articleName}}</strong></h4></a>
+                    <hr>
+                    <h6 style="display: inline-block;">{{ article.writer.name }} - {{ article.createdTime|date:"j F Y" }}</h6>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Arts -->
+    <br>
+    <h2 class="types-name">ARTS</h2>
+    <fieldset><legend style="width:auto;"></legend></fieldset>
+    <br>
+    <div class="owl-two owl-carousel owl-theme">
+        {% for article in arts %}
+        <div class="item">
+            <div class="col-lg-4" style="padding-bottom: 20px; max-width: 100%;" id="article" data-id="{{ article.id }}">
+                <img class="thumbnail" src="{{ article.image.url }}" alt="">
+                <div class="box-element">
+                    <a href="{% url 'article' article.id %}" class="articleView"><h4><strong>{{ article.articleName}}</strong></h4></a>
+                    <hr>
+                    <h6 style="display: inline-block;">{{ article.writer.name }} - {{ article.createdTime|date:"j F Y" }}</h6>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Lifestyles -->
+    <br>
+    <h2 class="types-name">LIFESTYLES</h2>
+    <fieldset><legend style="width:auto;"></legend></fieldset>
+    <br>
+    <div class="owl-two owl-carousel owl-theme">
+        {% for article in lifestyles %}
+        <div class="item">
+            <div class="col-lg-4" style="padding-bottom: 20px; max-width: 100%;" id="article" data-id="{{ article.id }}">
+                <img class="thumbnail" src="{{ article.image.url }}" alt="">
+                <div class="box-element">
+                    <a href="{% url 'article' article.id %}" class="articleView"><h4><strong>{{ article.articleName}}</strong></h4></a>
+                    <hr>
+                    <h6 style="display: inline-block;">{{ article.writer.name }} - {{ article.createdTime|date:"j F Y" }}</h6>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <!-- Humor -->
+    <br>
+    <h2 class="types-name">HUMOR</h2>
+    <fieldset><legend style="width:auto;"></legend></fieldset>
+    <br>
+    <div class="owl-two owl-carousel owl-theme">
+        {% for article in humors %}
+        <div class="item">
+            <div class="col-lg-4" style="padding-bottom: 20px; max-width: 100%;" id="article" data-id="{{ article.id }}">
+                <img class="thumbnail" src="{{ article.image.url }}" alt="">
+                <div class="box-element">
+                    <a href="{% url 'article' article.id %}" class="articleView"><h4><strong>{{ article.articleName}}</strong></h4></a>
+                    <hr>
+                    <h6 style="display: inline-block;">{{ article.writer.name }} - {{ article.createdTime|date:"j F Y" }}</h6>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+{% endblock %}

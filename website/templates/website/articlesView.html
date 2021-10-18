@@ -1,0 +1,47 @@
+{% extends "website/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
+{% endblock %}
+
+{% block body %}
+    <div class="row">
+        {% for article in members %}
+        <div class="col-lg-4" style="padding-bottom: 20px;" id="article" data-id="{{ article.id }}">
+            <img class="thumbnail" src="{{ article.image.url }}" alt="">
+            <div class="box-element">
+                <a href="{% url 'article' article.id %}" class="articleView"><h4><strong>{{ article.articleName}}</strong></h4></a>
+                <hr>
+                <h6 style="display: inline-block;">{{ article.writer.name }} - {{ article.createdTime }}</h6>
+            </div>
+        </div>
+        {% endfor %}
+        {% for article in articles %}
+        <div class="col-lg-4" style="padding-bottom: 20px;" id="article" data-id="{{ article.id }}">
+            <img class="thumbnail" src="{{ article.image.url }}" alt="">
+            <div class="box-element">
+                <a href="{% url 'article' article.id %}" class="articleView"><h4><strong>{{ article.articleName}}</strong></h4></a>
+                <hr>
+                <h6 style="display: inline-block;">{{ article.writer.name }} - {{ article.createdTime }}</h6>
+            </div>
+        </div>
+        {% endfor %}
+        {% for article in writers %}
+        <div class="col-lg-4" style="padding-bottom: 20px;" id="article" data-id="{{ article.id }}">
+            <img class="thumbnail" src="{{ article.image.url }}" alt="">
+            <div class="box-element">
+                <a href="{% url 'article' article.id %}" class="articleView"><h4><strong>{{ article.articleName}}</strong></h4></a>
+                <hr>
+                <h6 style="display: inline-block;">{{ article.writer.name }} - {{ article.createdTime }}</h6>
+            </div>
+        </div>
+        {% endfor %} 
+    </div>
+{% endblock %}

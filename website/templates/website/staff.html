@@ -1,0 +1,51 @@
+{% extends "website/layout.html" %}
+{% load static %}
+
+{% block script %}
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/1.1.1/marked.min.js"></script>
+{% endblock %}
+
+{% block body %}
+    <h1>Chief Editors:</h1>
+    <ul>
+        {% for member in chief %}
+            <li><h4>{{ member.name }}</h4></li>
+        {% endfor %}
+    </ul>
+    <h1>Section Editors:</h1>
+    <ul>
+        {% for member in section %}
+            <li><h4>{{ member.name }}</h4></li>
+        {% endfor %}
+    </ul>
+    <h1>Graphic Editors:</h1>
+    <ul>
+        {% for member in graphic %}
+            <li><h4>{{ member.name }}</h4></li>
+        {% endfor %}
+    </ul>
+    <h1>Staff Writers:</h1>
+    <ul>
+        {% for member in writer %}
+            <li><h4>{{ member.name }}</h4></li>
+        {% endfor %}
+    </ul>
+    <h1>Artists:</h1>
+    <ul>
+        {% for member in artist %}
+            <li><h4>{{ member.name }}</h4></li>
+        {% endfor %}
+    </ul>
+    <h1>Photographers:</h1>
+    <ul>
+        {% for member in photographer %}
+            <li><h4>{{ member.name }}</h4></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
