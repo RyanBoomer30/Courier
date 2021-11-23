@@ -55,24 +55,81 @@ header{
     margin-right: auto;
 }
 
-/* .content1{
-    position: relative;
-    margin: 130px auto;
-    text-align: center;
-    padding: 0 20px;
+.menu-toggle{
+    color: black;
+    float: right;
+    line-height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display: none;
+    -webkit-transition: all 0.15s ease-out 0;
+       -moz-transition: all 0.15s ease-out 0;
+            transition: all 0.15s ease-out 0;
+}
+  
+.sidebar {
+    -webkit-transition: all 0.15s ease-out 0;
+       -moz-transition: all 0.15s ease-out 0;
+            transition: all 0.15s ease-out 0;
   }
-
-.content1 .text{
-    font-size: 2.5rem;
-    font-weight: 600;
-    color: #202020;
+  
+.sidebar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+.sidebar li {
+    color: rgba(255, 255, 255, 0.8);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    margin-bottom: 16px;
+    -webkit-font-smoothing: antialiased;
+    cursor: pointer;
+  }
+  
+.sidebar li:hover {
+    color: rgba(255, 255, 255, 1);
+  }
+  
+#sidebartoggler {
+    display: none;
+  }
+  
+#sidebartoggler:checked + .page-wrap .sidebar {
+      left: 0px; }
+  
+#sidebartoggler:checked + .page-wrap .toggle {
+      left: 200px; }
+  
+ #sidebartoggler:checked + .page-wrap .page-content {
+      padding-left: 180px; }
+  
+  
+#navigation{
+    float: right;
 }
 
-.content1 .p{
-    font-size: 2.1875rem;
-    font-weight: 600;
-    color: #202020;
-} */
+#navigation ul{
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style-type: none;
+}
+
+#navigation ul a{
+    height: 50px;
+    line-height: 50px;
+    padding: 0 20px;
+    color: black;
+    text-decoration: none;
+    display: block;
+}
+
+#navigation ul a:hover{
+    color: gray;
+    text-decoration: none;
+}
 
 footer{
     position: relative;
@@ -247,13 +304,23 @@ footer{
     }
 }
 
-@media screen and (max-width: 1345px) {
+@media screen and (max-width: 1200px) {
     .header2{
         display: none;
     }
 
-    #navigation1{
+    #navigation{
         display: none;
+    }
+
+    .logo{
+        float: none;
+        margin: 0 auto;
+        width: 1em; 
+    }
+
+    .menu-toggle{
+        display: block;
     }
 }
 
@@ -629,6 +696,15 @@ legend {
 
 .searchbar-open {
     width: 100%
+}
+
+@keyframes slide{
+    from {
+        left: -100vw;
+    }
+    to {
+        left: 0;
+    }
 }
 
 @keyframes slider{

@@ -33,11 +33,12 @@
             <br>
             <header>
                 <p>
+                    <div class="menu-toggle"><i class="fa fa-bars" aria-hidden="true"></i></div>
                     <span class="logo">The Courier</span>
-                <nav class="navbar navbar-expand-lg navbar-light" id="navigation1">
-                    <!-- <img src="/media/courier.png" class="logo"> -->
-                    <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-                        <ul class="navbar-nav ml-auto">
+                    
+                    <nav class="navbar navbar-expand-lg navbar-light" id="navigation">
+                        <!-- <img src="/media/courier.png" class="logo"> -->
+                        <ul>
                             <li style="margin-right: 20px;">
                                 <a class="nav-link" href="{% url 'articleView' 'News' %}">NEWS</a>
                             </li>
@@ -57,9 +58,12 @@
                                 <a class="nav-link" href="{% url 'articleView' 'Humor' %}">HUMOR</a>
                             </li>
                         </ul>
-                    </div>
-                </nav>
+                    </nav>
+                </p>
             </header>
+            <br>
+            <br>
+            <br>
             <div class="header2">
                 <nav class="navbar navbar-expand-lg">
                     <ul class="navbar-nav ml-auto">
@@ -147,36 +151,3 @@
         <div id="quotesright">r</div>
     </body>
 </html>
-
-<!-- <form action="{% url 'articleSearch' %}" method="post" class="searchForm">
-    {% csrf_token %}
-    <input type="text" name="searched" placeholder="Search article or writer">
-</form> -->
-
-<!-- Old nav -->
-<!-- <div class="header" id="header" style="position:relative; ">
-    <a class="nav-link" href="{% url 'index' %}" style="color:#ce0000">The Courier</a>
-</div>
-<br>
-<div id="nav">
-    <ul>
-        <li>
-            <a href="{% url 'articleView' 'News' %}">News</a>
-        </li>
-        <li>
-            <a  href="{% url 'articleView' 'Opinions' %}">Opinions</a>
-        </li>
-        <li>
-            <a href="{% url 'articleView' 'Sports' %}">Sports</a>
-        </li>
-        <li>
-            <a href="{% url 'articleView' 'Arts' %}">Arts</a>
-        </li>
-        <li>
-            <a href="{% url 'articleView' 'Features' %}">Features</a>
-        </li>
-        <li>
-            <a href="{% url 'articleView' 'Humor' %}">Humor</a>
-        </li>
-    </ul>
-</div> -->
