@@ -1,0 +1,4 @@
+ckeditor
+json
+django
+mysqlclient
