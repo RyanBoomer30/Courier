@@ -34,7 +34,7 @@ def index(request):
         'sports': sports,
         'lifestyles': lifestyles,
         'arts': arts,
-        'humors': humors
+        'humors': humors,
     })
 
 # Login
@@ -100,10 +100,12 @@ def member(request):
             })
     else:
         if Member.objects.filter(user=request.user).exists():
+            memberList = Member.objects.all()
             return render(request, "website/member.html",{
                 'status': True,
                 'member': Member.objects.get(user=request.user),
                 'form': addArticle,
+                'memberList': memberList,
             })
         else:
             return render(request, "website/member.html",{
@@ -118,24 +120,26 @@ def articleCreate(request):
         catagory = request.POST["catagory"]
         image = request.FILES["image"]
         credit = request.POST["credit"]
-        user = Member.objects.get(user=request.user)
+        user = request.POST["writer"]
+        writer = Member.objects.get(id=user)
         article = Article.objects.create(
             articleName=name, 
             articleContent=content, 
             articleCatagory=catagory, 
-            writer=user,
+            writer=writer,
             image=image,
             imageCredit=credit)
         article.save()
         return HttpResponseRedirect(reverse("member"))
 
 def articleView(request, filter):
-    # if Article.objects.filter(articleCatagory=filter).exists():
-    articles = Article.objects.filter(articleCatagory=filter)
-    members = Article.objects.filter(writer__name=filter)
+    # if Article.objects.filter(articleCatagory=filter).exists(): 
+    if filter.isnumeric():
+        articles = Article.objects.filter(writer__id=filter)
+    else:
+        articles = Article.objects.filter(articleCatagory=filter)
     return render(request, "website/articlesView.html",{
         'articles': articles,
-        'members': members,
     })
 
 def article(request, article_id):
@@ -146,11 +150,13 @@ def article(request, article_id):
 
 def articleEditView(request, article_id):
     article = Article.objects.get(id=article_id)
-    if (article.writer.user == request.user):
+    if (request.user.is_superuser):
         form = editArticle(instance=article)
+        memberList = Member.objects.all()
         return render(request, "website/articleEdit.html",{
             'article': article,
-            'form': form
+            'form': form,
+            'memberList': memberList,
         })
     return HttpResponse("What u trying to pull here? Don't go edit random articles")
 
@@ -160,6 +166,8 @@ def articleEdit(request, article_id):
         article.articleName = request.POST["name"]
         article.articleCatagory = request.POST["catagory"]
         article.imageCredit = request.POST["credit"]
+        user = request.POST["writer"]
+        article.writer = Member.objects.get(id=user)
         article.save()
         editedForm = editArticle(request.POST, request.FILES, instance=article)
         if editedForm.is_valid():
@@ -177,20 +185,61 @@ def articleSearch(request):
         })
 
 def staff(request):
-    chief = Member.objects.filter(position="Chief")
-    section = Member.objects.filter(position="Section")
-    graphic = Member.objects.filter(position="Graphic")
-    writer = Member.objects.filter(position="Staff")
-    artist = Member.objects.filter(position="Artist")
-    photographer = Member.objects.filter(position="Photographer")
+    chief = Member.objects.filter(position="Editors-In-Chief")
+    assistant = Member.objects.filter(position="Assistant Editor")
+    tech = Member.objects.filter(position="Tech Executive")
+    layout = Member.objects.filter(position="Layout Editor")
+    news = Member.objects.filter(position="News Editors")
+    opinions = Member.objects.filter(position="Opinions Editors")
+    sports = Member.objects.filter(position="Sports Editors")
+    arts = Member.objects.filter(position="Arts Editors")
+    lifestyles = Member.objects.filter(position="Lifestyles Editor")
+    humor = Member.objects.filter(position="Humor Editors")
+    graphics = Member.objects.filter(position="Graphics Editor")
+    photographers = Member.objects.filter(position="Photographers")
+    staff = Member.objects.filter(position="Staff Writers")
+    alumni = Member.objects.filter(position="Alumni")
     return render(request, "website/staff.html", {
         'chief':chief,
-        'section':section,
-        'graphic':graphic,
-        'writer':writer,
-        'artist':artist,
-        'photographer':photographer,
+        'assistant':assistant,
+        'tech':tech,
+        'layout':layout,
+        'news': news,
+        'opinions':opinions,
+        'sports':sports,
+        'arts':arts,
+        'lifestyles':lifestyles,
+        'humor':humor,
+        'graphics':graphics,
+        'photographers':photographers,
+        'staff':staff,
+        'alumni':alumni,
     })
 
 def about(request):
     return render(request, "website/about.html")
+
+def adminPanel(request):
+    members = Member.objects.all()
+    return render(request, "website/adminPanel.html", {
+        'members': members
+    })
+
+def memberEditChoose(request):
+    members = Member.objects.all()
+    member = Member.objects.get(id=request.POST["member"])
+    return render(request, "website/adminPanel.html", {
+        'members': members,
+        'member': member
+    })
+
+def memberEdit(request, member_id):
+    members = Member.objects.all()
+    member = Member.objects.get(id=member_id)
+    member.name = request.POST["name"]
+    member.position = request.POST["position"]
+    member.save()
+    return render(request, "website/adminPanel.html", {
+        'members': members,
+        'member': member
+    })

@@ -13,16 +13,6 @@
 
 {% block body %}
     <div class="row">
-        {% for article in members %}
-        <div class="col-lg-4" style="padding-bottom: 20px;" id="article" data-id="{{ article.id }}">
-            <img class="thumbnail" src="{{ article.image.url }}" alt="">
-            <div class="box-element">
-                <a href="{% url 'article' article.id %}" class="articleView"><h4><strong>{{ article.articleName}}</strong></h4></a>
-                <hr>
-                <h6 style="display: inline-block;">{{ article.writer.name }} - {{ article.createdTime }}</h6>
-            </div>
-        </div>
-        {% endfor %}
         {% for article in articles %}
         <div class="col-lg-4" style="padding-bottom: 20px;" id="article" data-id="{{ article.id }}">
             <img class="thumbnail" src="{{ article.image.url }}" alt="">

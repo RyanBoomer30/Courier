@@ -12,40 +12,88 @@
 {% endblock %}
 
 {% block body %}
-    <h1>Chief Editors:</h1>
-    <ul>
+    <h1>Editors-In-Chief:</h1>
+    <ul style="padding-left: 30px">
         {% for member in chief %}
-            <li><h4>{{ member.name }}</h4></li>
+            <li><a href="{% url 'articleView' member.id %}" style="color: black;"><h4>{{ member.name }}</h4></a></li>
         {% endfor %}
     </ul>
-    <h1>Section Editors:</h1>
-    <ul>
-        {% for member in section %}
-            <li><h4>{{ member.name }}</h4></li>
+    <h1>Assistant Editor:</h1>
+    <ul style="padding-left: 30px">
+        {% for member in assistant %}
+            <li><a href="{% url 'articleView' member.id %}" style="color: black;"><h4>{{ member.name }}</h4></a></li>
         {% endfor %}
     </ul>
-    <h1>Graphic Editors:</h1>
-    <ul>
-        {% for member in graphic %}
-            <li><h4>{{ member.name }}</h4></li>
+    <h1>Tech Executive:</h1>
+    <ul style="padding-left: 30px">
+        {% for member in tech %}
+            <li><a href="{% url 'articleView' member.id %}" style="color: black;"><h4>{{ member.name }}</h4></a></li>
         {% endfor %}
     </ul>
-    <h1>Staff Writers:</h1>
-    <ul>
-        {% for member in writer %}
-            <li><h4>{{ member.name }}</h4></li>
+    <h1>Layout Editor:</h1>
+    <ul style="padding-left: 30px">
+        {% for member in layout %}
+            <li><a href="{% url 'articleView' member.id %}" style="color: black;"><h4>{{ member.name }}</h4></a></li>
         {% endfor %}
     </ul>
-    <h1>Artists:</h1>
-    <ul>
-        {% for member in artist %}
-            <li><h4>{{ member.name }}</h4></li>
+    <h1>News Editors:</h1>
+    <ul style="padding-left: 30px">
+        {% for member in news %}
+            <li><a href="{% url 'articleView' member.id %}" style="color: black;"><h4>{{ member.name }}</h4></a></li>
+        {% endfor %}
+    </ul>
+    <h1>Opinions Editors:</h1>
+    <ul style="padding-left: 30px">
+        {% for member in opinions %}
+            <li><a href="{% url 'articleView' member.id %}" style="color: black;"><h4>{{ member.name }}</h4></a></li>
+        {% endfor %}
+    </ul>
+    <h1>Sports Editors:</h1>
+    <ul style="padding-left: 30px">
+        {% for member in sports %}
+            <li><a href="{% url 'articleView' member.id %}" style="color: black;"><h4>{{ member.name }}</h4></a></li>
+        {% endfor %}
+    </ul>
+    <h1>Arts Editors:</h1>
+    <ul style="padding-left: 30px">
+        {% for member in arts %}
+            <li><a href="{% url 'articleView' member.id %}" style="color: black;"><h4>{{ member.name }}</h4></a></li>
+        {% endfor %}
+    </ul>
+    <h1>Lifestyles Editors:</h1>
+    <ul style="padding-left: 30px">
+        {% for member in lifestyles %}
+            <li><a href="{% url 'articleView' member.id %}" style="color: black;"><h4>{{ member.name }}</h4></a></li>
+        {% endfor %}
+    </ul>
+    <h1>Humor Editors:</h1>
+    <ul style="padding-left: 30px">
+        {% for member in humor %}
+            <li><a href="{% url 'articleView' member.id %}" style="color: black;"><h4>{{ member.name }}</h4></a></li>
+        {% endfor %}
+    </ul>
+    <h1>Graphics Editor:</h1>
+    <ul style="padding-left: 30px">
+        {% for member in graphics %}
+            <li><a href="{% url 'articleView' member.id %}" style="color: black;"><h4>{{ member.name }}</h4></a></li>
         {% endfor %}
     </ul>
     <h1>Photographers:</h1>
-    <ul>
-        {% for member in photographer %}
-            <li><h4>{{ member.name }}</h4></li>
+    <ul style="padding-left: 30px">
+        {% for member in photographers %}
+            <li><a href="{% url 'articleView' member.id %}" style="color: black;"><h4>{{ member.name }}</h4></a></li>
+        {% endfor %}
+    </ul>
+    <h1>Staff Writers:</h1>
+    <ul style="padding-left: 30px">
+        {% for member in staff %}
+            <li><a href="{% url 'articleView' member.id %}" style="color: black;"><h4>{{ member.name }}</h4></a></li>
+        {% endfor %}
+    </ul>
+    <h1>Alumni Writers:</h1>
+    <ul style="padding-left: 30px">
+        {% for member in alumni %}
+            <li><a href="{% url 'articleView' member.id %}" style="color: black;"><h4>{{ member.name }}</h4></a></li>
         {% endfor %}
     </ul>
 {% endblock %}

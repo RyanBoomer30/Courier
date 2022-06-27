@@ -21,9 +21,6 @@
         {{ form.media }}
         {{ form.as_p }}
         <div class="form-group">
-            <input class="form-control" autofocus type="text" name="credit" placeholder="Image Credit" value="{{ article.imageCredit }}">
-        </div>
-        <div class="form-group">
             <select class="custom-select mr-sm-2" name="catagory">
                 <option selected>{{ article.articleCatagory }}</option>
                 <option value="News">News</option>
@@ -33,6 +30,17 @@
                 <option value="Arts">Arts</option>
                 <option value="Humor">Humor</option>
             </select>
+        </div>
+        <div class="form-group">
+            <select class="custom-select mr-sm-2" name="writer">
+                <option value="{{ article.writer.id }}" selected>{{ article.writer.name }} ({{ article.writer.position }})</option>
+                {% for i in memberList %}
+                    <option value="{{ i.id }}">{{ i.name }} ({{ i.position }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-group">
+            <input class="form-control" autofocus type="text" name="credit" placeholder="Image Credit" value="{{ article.imageCredit }}">
         </div>
         <input class="btn btn-primary" type="submit" value="Post">     
     </form>

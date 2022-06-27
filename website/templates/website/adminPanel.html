@@ -1,0 +1,45 @@
+{% extends "website/layout.html" %}
+{% load static %}
+
+{% block body %}
+    <form action="{% url 'memberEditChoose' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <select class="custom-select mr-sm-2" name="member" onchange="this.form.submit()">
+            <option selected>Please select a member</option>
+            {% for i in members %}
+                <option value="{{ i.id }}">{{ i.name }}</option>
+            {% endfor %}
+        </select>
+    </form>
+    <br>
+    {% if member %}
+        <h2>You are editing {{member.name}} who happens to be a {{member.position}}</h2>
+        <form action="{% url 'memberEdit' member.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+                <input class="form-control" autofocus type="text" name="name" placeholder="Name" value="{{ member.name }}">
+            </div>
+            <div class="form-group">
+                <select class="custom-select mr-sm-2" name="position">
+                    <option selected>{{ member.position }}</option>
+                    <option value="Editors-In-Chief">Editors-In-Chief</option>
+                    <option value="Assistant Editor">Assistant Editor</option>
+                    <option value="Tech Executive">Tech Executive</option>
+                    <option value="Layout Editor">Layout Editor</option>
+                    <option value="News Editors">News Editors</option>
+                    <option value="Opinions Editors">Opinions Editors</option>
+                    <option value="Sports Editors">Sports Editors</option>
+                    <option value="Arts Editors">Arts Editors</option>
+                    <option value="Lifestyles Editors">Lifestyles Editors</option>
+                    <option value="Humor Editors">Humor Editors</option>
+                    <option value="Graphics Editor">Graphics Editor</option>
+                    <option value="Photographers">Photographers</option>
+                    <option value="Staff Writers">Staff Writers</option>
+                    <option value="Alumni Writers">Alumni Writers</option>
+                </select>
+            </div>
+            <br>
+            <input class="btn btn-primary" type="submit" value="Post">     
+        </form>
+    {% endif %}
+{% endblock %}

@@ -13,7 +13,7 @@
 
 {% block body %}
         <div class="articleHeader">
-            <h6 style="display: inline-block;"><a href="{% url 'articleView' article.writer.name %}" style="color: black;">{{ article.writer.name }}</a> - {{ article.createdTime|date:"j F Y" }}</h6>
+            <h6 style="display: inline-block;"><a href="{% url 'articleView' article.writer.id %}" style="color: black;">{{ article.writer.name }}</a> - {{ article.createdTime|date:"j F Y" }}</h6>
             <h1><strong>{{ article.articleName }}</strong></h1>
             <img src="{{ article.image.url }}">
             <br>
@@ -21,7 +21,7 @@
         </div>
         <br>
         <h5 class="articleContent">{{ article.articleContent|safe }}</h5>
-        {% if user == article.writer.user %}
+        {% if user.is_superuser %}
             <a href="{% url 'articleEditView' article.id %}"><h2>Edit</h2></a>
         {% endif %}
 {% endblock %}

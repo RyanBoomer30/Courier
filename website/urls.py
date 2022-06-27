@@ -16,4 +16,7 @@ urlpatterns = [
     path("articleSearch", views.articleSearch, name="articleSearch"),
     path("staff", views.staff, name="staff"),
     path("about", views.about, name="about"),
+    path("adminPanel", views.adminPanel, name="adminPanel"),
+    path("memberEditChoose", views.memberEditChoose, name="memberEditChoose"),
+    path("memberEdit/<int:member_id>", views.memberEdit, name="memberEdit"),
 ]
